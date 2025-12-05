@@ -1,0 +1,10 @@
+body { font-family: Arial, sans-serif; background: #f4f4f9; display: flex; justify-content: center; padding-top: 50px; }
+.container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
+.input-group { display: flex; gap: 5px; margin-bottom: 20px; }
+input { flex: 1; padding: 8px; }
+button { padding: 8px; background: #28a745; color: white; border: none; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+.completed { text-decoration: line-through; color: gray; }
+.btn-del { background: #dc3545; font-size: 0.8em; margin-left: 5px; }
+.btn-done { background: #007bff; font-size: 0.8em; }

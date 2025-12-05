@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    build: ./database
+    image: aykencastro/todo-db:v1.0-mvp
+    container_name: todo-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    image: aykencastro/todo-backend:v1.0-mvp
+    container_name: todo-backend
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASS: postgrespassword
+      DB_NAME: todo_db
+      PORT: 3000
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build: ./frontend
+    image: aykencastro/todo-frontend:v1.0-mvp
+    container_name: todo-frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:
